@@ -1,231 +1,121 @@
+// Assignment 1 Week 2 Day 1
+``` diff
++ Theory:
 
-## Theory:
+- What is Javascript?
 
-1. ### What is Javascript?
- 
-     javascript is a dynamically typed prograamming language for the web. it was developed by Brendan Eich at netscape.
-other than using it for web development its is used in game development, and lots more.
+JavaScript is an object orient programming language designed to make web development easier and more attractive. In most cases, JavaScript is used to create responsive, interactive elements for web pages, enhancing the user experience.
 
-2. ### What is the difference between _let_ and _var_?
-   
-      The main difference between let and var is that scope of a variable defined with let is limited to the block in which it is declared while variable declared with var has the global scope. So we can say that var is rather a keyword which defines a variable globally regardless of block scope
- 
-- let 
- 
-```js
-// program to print the text
-// variable a cannot be used here
-function greet() {
-    let a = 'hello';
+! What is the difference between let and var?
 
-    // variable b cannot be used here
-    if(a == 'hello'){
-        // variable b can be used here
-        let b = 'world';
-        console.log(a + ' ' + b);
-    }
+The main difference between let and var is that scope of a variable defined with let is limited to the block in which it is declared while variable declared with var has the global scope. So we can say that var is rather a keyword which defines a variable globally regardless of block scope.
 
-     // variable b cannot be used here
-    console.log(a + ' ' + b); // error
-}
-// variable a cannot be used here
+The scope of let not only limited to the block in which it is defined but variable with let also do not get added with global window object even if it get declared outside of any block. But we can access variable with var from window object if it is defined globally.
 
-greet();
-```
+Due to limited scope let variables are usually used when there is limited use of those variables such as in for loops, while loops or inside the scope of if conditions etc while var variable is used when value of variable need to be less change and used to accessed globally.
 
-- var
+Also, one difference between var and let is variable with var can be redeclared to some other value while variable could not be redeclared if it is defined with let
 
- ```js
-     var funcs = [];
-// let's create 3 functions
-for (var i = 0; i < 3; i++) {
-  // and store them in funcs
-  funcs[i] = function() {
-    // each should log its value.
-    console.log("My value: " + i);
-  };
-}
-for (var j = 0; j < 3; j++) {
-  // and now let's run each one to see
-  funcs[j]();
-}
- ```
- 
-3.  ### Why do prefer _const_ over _var_?
-    
-     - The value of const variable cannot be changed.
-     - const makes sure that the variable (well, constant) binding is immutable but the object itself can change whenever you need to.
-     
- ```js
-     const N = 1000 
-const squares = [] 
- 
-for(let i = 0 ; i < N ; ++i) { 
-	squares[i] = new Square(Math.random() * canvas.width, Math.random() * canvas.height, 1) 
- } 
- ```
- 
- 4.  ### What is the use of JavaScript in Web Browsers?
- 
-     JavaScript is a programming language used both on the client-side and server-side that allows you to make web pages interactive this is one of the biggest reson that javascript is so much used in web pages there are many features in javascript like its `DOM` manipulation provides us better control over our webpage.
-     JavaScript is a programming language used primarily by Web browsers to create a dynamic and interactive experience for the user.
-     
- 5.  ### What are Objects?
-    
-       Object is a unique entity, which contains data and functions that is characteristics and behaviours together in an object oriented programming language.
-       It is used to store various keyed collections and more complex entities. Objects can be created using the `Object()` constructor.
-       
- 6.  ### What is an Array and how is it different from an Object in JavaScript?
-  
-       Both objects and arrays are considered “special” in JavaScript. Objects represent a special data type that is mutable and can be used to store a collection of data (rather than just a single value). Arrays are a special type of variable that is also mutable and can also be used to store a list of values.
-       - JS arrays are not associative arrays.
-       - Arrays in JS are zero-indexed.
+let a = 'hello'; // globally scoped var b = 'world'; // globally scoped console.log(window.a); // undefined console.log(window.b); // 'world' var a = 'hello'; var a = 'world'; // No problem, 'hello' is replaced. let b = 'hello'; let b = 'world'; // SyntaxError: Identifier 'b' has already been declared
 
- 7. ### What is a function?
- 
-       A function is a block of code that is designed to perform a specific task.
-        Functions provide better modularity for your application and a high degree of code reusing.
-        
- 8.  ### How can we implement call by value and call by reference in Javascript?
-      
-      -  By value 
- ```js
-    var a = 5;
-    var b;
-    b = a;
-    a = 3;
-    console.log(a);
-    console.log(b)
-```
+- Why do prefer const over var?
 
-     -  By reference
-```js
-    var c = { greeting : 'Welcome' };
-    var d;
-    d = c;
-  
-    // Mutating the value of c
-    c.greeting = 'Welcome to geeksforgeeks';
-    console.log(c);
-    console.log(d);
-```
+If we wish for a variable to be re-definable, one can prefer using var. The usage of const makes sure that the variable binding is immutable but the object itself can change whenever we like.
 
-9.  ### What are primitive data types in JS?
++ What is the use of JavaScript in Web Browsers?
 
-      There are 7 primitive data types: string, number, bigint, boolean, undefined, symbol, and null.
+Using this, we can transform a website from having very basic functionality to be whatever we wish to be. In terms of human analogy, JavaScript is the brain of the website.
 
-10. ### What is DOM ?
-   
-      The Document Object Model (DOM) is an application programming interface (API) for HTML and XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. In the DOM specification, the term "document" is used in the broad sense - increasingly, XML is being used as a way of representing many different kinds of information that may be stored in diverse systems, and much of this would traditionally be seen as data rather than as documents. Nevertheless, XML presents this data as documents, and the DOM may be used to manage this data.
-      
-11. ### Why do we need DOM?
-       
-          DOM allows JS to be powerful enought to access and change everything that can be changed in a HTML document i.e. we can change the Styling, create new elements, etc. Being able to use DOM gives the programmer infinite possibilities and thus allows a programmer to be able to create truly dynamic web pages.
-          
-          
-          
-    
-<hr>
+- What are Objects?
 
-## Programs:
+Objects are one of the available data types in JS. It is used to store various keyed collections and more complex entities. Objects can be created using the Object() constructor. To create a sample object:
 
-1. ### Average of array nums in JS.
+const person = { name: "John Doe", age: 52, jobStatus: "Retired", };
 
-```js
-var grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-var average = calculateAverage(grades, 0, 9);
+! What is an Array and how is it different from an Object in JavaScript?
+
+An array is a special variable, that can hold more than one value. In Programming languages such as C++, Java,etc. Arrays are generally collection of similar types of data. Arrays in JS are also objects.
+
+Arrays in JS are resizable and can contain a mix of different data types. JS arrays are not associative arrays. Arrays in JS are zero-indexed. To create a sample array in JS.
+
+const exampleArr = new Array("This", "is", "an", "example"); Objects must be used when you wish to access data in a key-value pairing and use arrays when you wish to create a simple list of things.
+
++ What is a function?
+
+A function is a block of code that is designed to perform a specific task. The usage of a function also helps in re-use of code rather than writing it each time we wish to use it.
+
+To declare a function:
+
+function nthFibonacci(inpNum) { if (inpNum <= 1) return inpNum; return nthFibonacci(inpNum - 2) + nthFibonacci(inpNum - 1); }
+
+- How can we implement call by value and call by reference in Javascript?
+
+To implement call by value, see the code snippet below:
+
+let originalVal = 10; function updateOriginalVal(originalVal) { originalVal += 10; console.log(originalVal); }
+
+updateOriginalVal(originalVal); // 20 console.log(originalVal); // 10
+
+As we can see, the value of the originalVal variable did not change, rather it was a copy of the original variable, whose value gets changed.
+
+To implement call by reference, see the code snippet below:
+
+let myObj = { val: 10, };
+
+function updateVal(objRef) { objRef.val += 10; }
+
+console.log(myObj.val); // 10 updateVal(myObj); console.log(myObj.val); // 20
+
++ What are primitive data types in JS?
+
+A primitive data type is a data type that is not an object and has no methods or properties. There are 7 primitive data types in JS: string, number, bigint, boolean, undefined, symbol and null.
+
+! What is DOM ?
+
+DOM stands for Document Object Model, with the help of DOM JS can access and change all the elements of a HTML document. It is constructed as a tree of Objects.
+
+With the object model, JS gets all the power it needs to create dynamic web pages.
+
+- Why do we need DOM?
+
+DOM allows JS to be powerful enought to access and change everything that can be changed in a HTML document i.e. we can change the Styling, create new elements, etc. Being able to use DOM gives the programmer infinite possibilities and thus allows a programmer to be able to create truly dynamic web pages.
+
+//-------------------- Programs: -------------------
+
++ Average of array nums in JS.
+
+const arr = [1, 2, 3, 4, 5];
+
+const average = arr.reduce((a, b) => a + b, 0) / arr.length;
+
 console.log(average);
 
-function calculateAverage(arr, start, end) {
-    var total = 0;
-    for (var i = start; i <= end; i++) {
-        total += arr[i];
-    }
-    var diff = (end - start) + 1;
-    var avg = total / diff;
-    return avg
-}
-```
+// Swap variables using reference.
 
+function swapUsingReference(objRef) { let temp = objRef.var2; objRef.var2 = objRef.var1; objRef.var1 = temp; }
 
-2. ### Swap variables using reference.
+const sampObj = { var1: 5, var2: 2, }; console.log(sampObj); swapUsingReference(sampObj); console.log(sampObj);
 
-```js
-// JavaScript Program to Swap Two Variables
-var num1 = prompt("Enter first number: ");
-var num2 = prompt("Enter second number: ");
-// Temporary variable
-var temp;
-// Swapping two variables
-temp = num1;
-num1 = num2;
-num2 = temp;
-console.log("The value of first number after swapping: " + num1);
-console.log("The value of second number after swapping: " + num2);
- ```
- 
-3. ### Print the fibonacci sequence.
+- or we can try something like this:
 
-```js
-// Print the fibonacci sequence
-function printFibonacciSequence() {
-    let inputNum = parseInt(prompt("Enter a number: "));
-    let a = 0,
-        b = 1;
-    let nextVal;
-    for (let i = 1; i <= inputNum; i++) {
-        console.log(a);
-        nextVal = a + b;
-        a = b;
-        b = nextVal;
-    }
-}
+let a = 5; let b = 2; console.log(a + " ," + b); [a, b] = [b, a]; console.log(a + " ," + b);
 
-console.log("Fibonacci sequence: ");
-printFibonacciSequence();
-```
++ Print the fibonacci sequence.
 
+function printFibonacciSequence() { let inputNum = parseInt(prompt("Enter a number: ")); let a = 0, b = 1; let nextVal; for (let i = 1; i <= inputNum; i++) { console.log(a); nextVal = a + b; a = b; b = nextVal; } }
 
-4. ### Sort an array in both ascending order and descending order.
+console.log("Fibonacci sequence: "); printFibonacciSequence();
 
-  - Asscending order:
+! Sort an array in both ascending order and descending order.
 
-```js
-const arr1 = [21, 2100, 2, 35000];
-let ascN = arr1.sort((f, s) => f - s);
-console.log(arr1);
-```
-   - Descending Order 
+Sort numbers in ascending order:
 
-```js
-const arr2 = [21, 2100, 2, 35000];
-let dscN = arr2.sort((f, s) => s - f);
-console.log(arr2);
-```
+const points = [40, 100, 1, 5, 25, 10];
 
+points.sort(function(a, b){return a-b});
 
-5. ### Show a variable value in an HTML webpage using DOM.
+Sort numbers in descending order:
 
-```html
-<!DOCTYPE html>
-<html>
+const points = [40, 100, 1, 5, 25, 10];
 
-<body>
-
-    <p>HTML webpage using DOM.</p>
-
-    <span onclick="myFunction()">click Me</span>
-
-    <script>
-        function myFunction() {
-            var x = document.createElement("VAR");
-            var t = document.createTextNode("Hello this is dom..");
-            x.appendChild(t);
-            document.body.appendChild(x);
-        }
-    </script>
-
-</body>
-
-</html>
-```
+points.sort(function(a, b){return b-a});
